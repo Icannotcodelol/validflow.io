@@ -33,7 +33,63 @@ export const subIndustries = {
     { value: "fitness", label: "Fitness & Wellness" },
     { value: "medical_devices", label: "Medical Devices" },
   ],
-  // Add more sub-industries for other categories...
+  education: [
+    { value: "e_learning", label: "E-Learning Platforms" },
+    { value: "ed_tech", label: "Educational Technology" },
+    { value: "professional_dev", label: "Professional Development" },
+    { value: "tutoring", label: "Tutoring Services" },
+    { value: "language", label: "Language Learning" },
+  ],
+  finance: [
+    { value: "fintech", label: "Financial Technology" },
+    { value: "banking", label: "Banking Services" },
+    { value: "investment", label: "Investment & Trading" },
+    { value: "insurance", label: "Insurance" },
+    { value: "crypto", label: "Cryptocurrency & Blockchain" },
+    { value: "personal_finance", label: "Personal Finance" },
+  ],
+  retail: [
+    { value: "ecommerce", label: "E-commerce" },
+    { value: "d2c", label: "Direct to Consumer" },
+    { value: "marketplace", label: "Online Marketplace" },
+    { value: "subscription_box", label: "Subscription Box" },
+    { value: "brick_mortar", label: "Brick and Mortar" },
+  ],
+  manufacturing: [
+    { value: "smart_manufacturing", label: "Smart Manufacturing" },
+    { value: "3d_printing", label: "3D Printing" },
+    { value: "robotics", label: "Robotics & Automation" },
+    { value: "sustainable", label: "Sustainable Manufacturing" },
+    { value: "custom", label: "Custom Manufacturing" },
+  ],
+  entertainment: [
+    { value: "gaming", label: "Gaming & Esports" },
+    { value: "streaming", label: "Streaming Services" },
+    { value: "virtual_reality", label: "Virtual Reality" },
+    { value: "content_creation", label: "Content Creation" },
+    { value: "events", label: "Live Events & Experiences" },
+  ],
+  travel: [
+    { value: "booking", label: "Travel Booking" },
+    { value: "experiences", label: "Local Experiences" },
+    { value: "business_travel", label: "Business Travel" },
+    { value: "accommodation", label: "Accommodation Services" },
+    { value: "transportation", label: "Transportation Services" },
+  ],
+  food: [
+    { value: "delivery", label: "Food Delivery" },
+    { value: "meal_prep", label: "Meal Preparation" },
+    { value: "restaurant", label: "Restaurant Technology" },
+    { value: "ghost_kitchen", label: "Ghost Kitchen" },
+    { value: "specialty_food", label: "Specialty Food & Beverage" },
+  ],
+  real_estate: [
+    { value: "proptech", label: "Property Technology" },
+    { value: "rental", label: "Rental & Property Management" },
+    { value: "commercial", label: "Commercial Real Estate" },
+    { value: "residential", label: "Residential Real Estate" },
+    { value: "co_living", label: "Co-living Spaces" },
+  ],
 } satisfies Record<string, Option[]>
 
 export const monetizationStrategies = [
