@@ -1,0 +1,181 @@
+we are building ValiFlow a web app where users can input their business ideas and recieve 
+
+
+Landing page:
+# Landing Page Typing Animation Implementation Request
+
+I need to implement a dynamic typing animation for the hero section of my product validation web app landing page. The animation should create a visually engaging introduction to the purpose of the application.
+
+## Animation Concept
+The animation should show:
+1. Static text "Validate my" followed by
+2. A series of product ideas that get typed out one-by-one, displayed briefly, then deleted before the next idea appears
+3. This creates an endless loop showcasing different product possibilities users can validate
+
+Animation Specifications
+- The static text "Validate my" should remain on screen at all times
+- Each product idea should be typed out character by character at a moderate typing speed
+- After typing completion, each idea should remain visible for ~2 seconds
+- The idea should then be deleted character by character (backspace effect)
+- Immediately start typing the next idea after deletion
+- The animation should loop continuously through all ideas
+- Text should be prominent and eye-catching, matching the landing page's design style
+- Place this in the hero section of the landing page, ideally centered or aligned with other key messaging
+- Ensure the component is responsive and displays properly on all screen sizes
+
+## Technical Requirements
+- Use React for implementation
+- Implement with TypeScript if the rest of the project uses it
+- Consider using a library like TypewriterJS, react-typing-effect, or implement custom animation
+- Ensure smooth performance with no jittering or performance issues
+- Make the component easily configurable so we can update the product ideas list in the future
+- Include accessibility considerations (should not interfere with screen readers)
+
+Below this animation there should be a sample analysis with a made up company, exactly preview what the user will recieve with their idea. Implemented here is a try with your idea button that takes the user to the form to input their idea
+
+Form:
+The form should be a mix of dropdown menus and one open text field. the dropdown menues should allow the user the choose industry and sub industry of their product, aswell as monetization strategy and team composition. (4 dropdon menus) The open question should just allow the user to paste their idea and explain what problem they're solving and how. there should be an analyse now button
+
+Results page:
+after the user submits their form, the analysis is created. It should in detail explore each of these fields:
+Overall sentiment 
+Market overview (Adressable Market Size and so on) 
+Competitor analysis 
+Venture Capital Activity around this idea 
+Strenghts and weakness analysis 
+Go to Market Strategy 
+Possible pricing structures w/ built in revenue calculator based on pricing model and ppu 
+Possible Ad verstiment/Marketing Strategies 
+3 hard questions about the idea that the founder should think about/be ready to answer Summary
+
+
+Backend handling:
+Account and data management using supabase, payment through Stripe
+Nextjs and react
+Deployment on vercel, I have already purchased the validflow.io domain
+Each section of the results page is created by its own API call:
+
+Overall sentiment (Claude API)
+Market overview (Adressable Market Size and so on) (Perplexity API)
+Competitor analysis (Perplexity API)
+Venture Capital Activity around this idea (Perplexity API)
+Strenghts and weakness analysis (Claude API)
+Go to Market Strategy (Claude API)
+Possible pricing structures w/ built in revenue calculator based on pricing model and ppu (OpenAI API)
+Possible Ad verstiment/Marketing Strategies (Claude API)
+3 hard questions about the idea that the founder should think about/be ready to answer Summary (OpenAI API)
+
+
+### Design System Requirements
+- Brand Colors: Primary (#3B82F6 - blue), Secondary (#10B981 - green), Accent (#6366F1 - indigo)
+- Typography: Inter for headings, System UI for body text
+- Mobile Breakpoints: sm(640px), md(768px), lg(1024px), xl(1280px)
+- Accessibility: WCAG 2.1 Level AA compliance
+- Dark mode support required
+
+### API Integration Specifications
+1. Claude API
+   - Response format: JSON
+   - Timeout: 30 seconds
+   - Retry attempts: 3
+   - Used for: Sentiment, SWOT, GTM, Marketing Strategy
+
+2. Perplexity API
+   - Response format: JSON
+   - Timeout: 20 seconds
+   - Retry attempts: 2
+   - Used for: Market Overview, Competitors, VC Activity
+
+3. OpenAI API
+   - Response format: JSON
+   - Timeout: 15 seconds
+   - Retry attempts: 3
+   - Used for: Pricing, Hard Questions
+
+### Business Logic Specifications
+1. Free vs Paid Analysis Limitations:
+   - Free: 
+     * 2 competitors (vs 8 in paid)
+     * Basic market size metrics
+     * Limited SWOT analysis
+     * Basic pricing suggestions
+     * 1 marketing strategy
+   - Paid:
+     * Full competitor analysis
+     * Detailed market metrics
+     * Complete SWOT analysis
+     * Multiple pricing models
+     * Comprehensive marketing strategies
+
+2. Revenue Calculator Requirements:
+   - Input fields: 
+     * Customer acquisition cost
+     * Customer lifetime value
+     * Pricing tiers
+     * Market penetration rate
+   - Interactive sliders for adjustments
+   - Real-time calculations
+
+### Performance Requirements
+- Page load time: < 2 seconds
+- Analysis generation: < 60 seconds
+- Concurrent users: 100+
+- Caching: 
+  * Cache analysis results for 24 hours
+  * Cache market data for 12 hours
+  * No caching of personal data
+
+### Security Specifications
+- Data Retention:
+  * Analysis results: 90 days
+  * User data: Until account deletion
+  * Payment info: Handled by Stripe
+- Rate Limiting:
+  * 5 requests per minute per IP
+  * 50 analyses per month per paid user
+  * 1 free analysis per fingerprint
+
+### Integration Details
+1. Supabase Tables:
+   - users
+   - analyses
+   - payments
+   - api_logs
+   - fingerprints
+
+2. Stripe Integration:
+   - Products:
+     * Single analysis: €9.99
+     * Monthly subscription: €99.99
+   - Webhook endpoints:
+     * /api/webhook/stripe
+     * Handle: payment_success, subscription_updated, payment_failed
+
+3. Analytics Requirements:
+   - Track:
+     * Time spent on analysis
+     * Most popular industries
+     * Conversion rate
+     * User journey
+   - Integration with Google Analytics 4
+
+4. Error Handling:
+   - Graceful degradation for API failures
+   - User-friendly error messages
+   - Error logging to admin dashboard
+   - Automatic error notifications for critical failures
+
+### Development Environment
+- Debug mode toggle in admin panel
+- API response mocking for development
+- Separate development database
+- Environment variable management through .env files
+
+
+
+
+
+
+
+
+
